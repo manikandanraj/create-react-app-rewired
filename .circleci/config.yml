@@ -17,16 +17,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}        
-      - run:
-          name: echo env "${CI}"
-          command: echo "${CI}"
-      - run:
-          name: echo env ${CI}
-          command: echo ${CI}
-      - run:
-          name: echo env CI
-          command: echo CI
+          key: v1-dependencies-{{ checksum "yarn.lock" }}              
       - run:
           name: run lint for js and css files 
           command: yarn lint
