@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:8.9.4    
     working_directory: ~/lp02-north-cascades-client
     steps:
       - checkout
@@ -17,13 +17,22 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}          
+          key: v1-dependencies-{{ checksum "yarn.lock" }}        
+      - run:
+          name: echo env "${CIRCLE_BRANCH}"
+          command: echo "${CIRCLE_BRANCH}"
+      - run:
+          name: echo env ${CIRCLE_BRANCH}
+          command: echo ${CIRCLE_BRANCH}
+      - run:
+          name: echo env CIRCLE_BRANCH
+          command: echo CIRCLE_BRANCH
       - run:
           name: run lint for js and css files 
           command: yarn lint
       - run:
           name: run tests
-          command: npm run test:once
+          command: npm run test
       # deploy to heroku
       - run: 
           name: run heroku setup script

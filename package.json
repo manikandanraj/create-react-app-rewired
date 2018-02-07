@@ -34,8 +34,7 @@
     "lint:js:fix": "eslint src/**/*.{js,jsx} --fix",
     "precommit": "lint-staged",
     "start": "react-app-rewired start",
-    "test": "react-app-rewired test --env=jsdom",
-    "test:once": "SET CI=true&&react-app-rewired test --env=jsdom"
+    "test": "react-app-rewired test --env=jsdom"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
