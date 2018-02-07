@@ -5,9 +5,9 @@ import TextField from 'react-md/lib/TextFields';
 import styled from 'styled-components';
 import { graphql } from 'react-apollo';
 
-import loginQuery from './Login.gql'
+import loginQuery from './Login.gql';
 
-const LoginCard = styled(Card) `
+const LoginCard = styled(Card)`
   width: 50%;
   margin-left: 25%;
 `;
@@ -28,7 +28,7 @@ export class LoginPage extends Component {
 
   authenticateUser = (e) => {
     e.preventDefault();
-    //TODO: Login user
+    // TODO: Login user
   }
 
   render() {
