@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.4
+    working_directory: ~/lp02-north-cascades-client
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: 
+          name: install node modules
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}          
+      - run:
+          name: run lint for js and css files 
+          command: yarn lint
+      - run:
+          name: run tests
+          command: npm run test:once
+      # deploy to heroku
+      - run: 
+          name: run heroku setup script
+          command: bash .circleci/setup-heroku.sh
+      - add_ssh_keys:
+          fingerprints:
+            - $HEROKU_SSH_FINGERPRINT
+      - deploy:
+          name: Deploy to Heroku if tests pass and branch is master
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push --force git@heroku.com:$HEROKU_APP_NAME.git HEAD:refs/heads/master
+            fi

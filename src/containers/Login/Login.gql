@@ -1,0 +1,6 @@
+query {
+  user(userId:"11111")
+  {
+    userId    
+  }
+}
