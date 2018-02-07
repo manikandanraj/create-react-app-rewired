@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.9.4    
+    environment:
+      - CI: true
     working_directory: ~/lp02-north-cascades-client
     steps:
       - checkout
