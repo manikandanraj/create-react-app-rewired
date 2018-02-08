@@ -3,11 +3,11 @@ import Button from 'react-md/lib/Buttons';
 import { Card, CardText, CardTitle } from 'react-md/lib/Cards';
 import TextField from 'react-md/lib/TextFields';
 import styled from 'styled-components';
-import { graphql } from 'react-apollo';
+// import { graphql } from 'react-apollo';
 
-//import loginQuery from './Login.gql';
+// import loginQuery from './Login.gql';
 
-const LoginCard = styled(Card) `
+const LoginCard = styled(Card)`
   width: 50%;
   margin-left: 25%;
 `;
@@ -74,6 +74,6 @@ export class LoginPage extends Component {
 }
 
 
-//export default graphql(loginQuery)(LoginPage);
+// export default graphql(loginQuery)(LoginPage);
 export default LoginPage;
 

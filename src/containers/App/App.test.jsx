@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 describe('Containers:App', () => {
-
   beforeAll(() => {
     window.sessionStorage = {
       getItem() { },
@@ -17,6 +16,5 @@ describe('Containers:App', () => {
     ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-
-})
+});
 
