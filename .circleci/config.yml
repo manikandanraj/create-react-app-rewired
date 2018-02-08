@@ -3,8 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.9.4    
-    environment:
-      - CI: true
+    # environment:
+    #   - CI: true
     working_directory: ~/lp02-north-cascades-client
     steps:
       - checkout
@@ -16,6 +16,8 @@ jobs:
       - run: 
           name: install node modules
           command: yarn install
+      - run: echo ${CRICLECI}
+      - run: echo ${CI}
       - save_cache:
           paths:
             - node_modules
@@ -27,15 +29,15 @@ jobs:
           name: run tests
           command: npm run test
       # deploy to heroku
-      - run: 
-          name: run heroku setup script
-          command: bash .circleci/setup-heroku.sh
-      - add_ssh_keys:
-          fingerprints:
-            - $HEROKU_SSH_FINGERPRINT
-      - deploy:
-          name: Deploy to Heroku if tests pass and branch is master
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git push --force git@heroku.com:$HEROKU_APP_NAME.git HEAD:refs/heads/master
-            fi
+    #   - run: 
+    #       name: run heroku setup script
+    #       command: bash .circleci/setup-heroku.sh
+    #   - add_ssh_keys:
+    #       fingerprints:
+    #         - $HEROKU_SSH_FINGERPRINT
+    #   - deploy:
+    #       name: Deploy to Heroku if tests pass and branch is master
+    #       command: |
+    #         if [ "${CIRCLE_BRANCH}" == "master" ]; then
+    #           git push --force git@heroku.com:$HEROKU_APP_NAME.git HEAD:refs/heads/master
+    #         fi
