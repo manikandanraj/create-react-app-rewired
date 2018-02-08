@@ -28,7 +28,7 @@
   "scripts": {
     "build": "react-app-rewired build",
     "eject": "react-scripts eject",
-    "lint": "yarn lint:js && yarn lint:css",
+    "lint": "yarn lint:js & yarn lint:css",
     "lint:css": "stylelint src/**/*.{js,jsx}",
     "lint:js": "eslint src/**/*.{js,jsx}",
     "lint:js:fix": "eslint src/**/*.{js,jsx} --fix",
