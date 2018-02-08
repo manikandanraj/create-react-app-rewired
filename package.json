@@ -45,6 +45,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "husky": "^0.14.3",
+    "jest-transform-graphql": "^2.1.0",
     "lint-staged": "^6.1.0",
     "react-app-rewire-inline-import-graphql-ast": "^1.0.3",
     "react-app-rewired": "^1.4.1",
