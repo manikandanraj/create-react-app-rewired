@@ -12,7 +12,7 @@ describe('Containers:App', () => {
   });
 
   it('renders without crashing', () => {
-    console.log('process.env.CI',process.env.CI);
+    console.log('process.env.CI', process.env.CI);
     const div = document.createElement('div');
     ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
